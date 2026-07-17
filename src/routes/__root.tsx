@@ -93,10 +93,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Automate common workplace tasks with AI. Emails, summaries, plans, research and chat in one dashboard.",
+          "WorkWise AI is an AI-powered workplace productivity assistant with email generation, meeting summaries, task planning, research and chat.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "WorkWise AI — AI Workplace Productivity Assistant" },
+      { name: "twitter:description", content: "WorkWise AI is an AI-powered workplace productivity assistant with email generation, meeting summaries, task planning, research and chat." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/14e04046-9eb2-4ba3-b276-83c734909a34" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/14e04046-9eb2-4ba3-b276-83c734909a34" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
