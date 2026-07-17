@@ -50,7 +50,7 @@ function Dashboard() {
 
   return (
     <div className="mx-auto max-w-7xl space-y-8">
-      <section className="rounded-2xl border bg-gradient-to-br from-primary/10 via-card to-accent/10 p-6 sm:p-8">
+      <section className="animate-fade-in rounded-2xl border bg-gradient-to-br from-primary/10 via-card to-accent/10 p-6 sm:p-8">
         <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-primary">
           <Sparkles className="h-3.5 w-3.5" />
           Welcome back
@@ -65,14 +65,18 @@ function Dashboard() {
       </section>
 
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-        {cards.map((c) => (
-          <Card key={c.label} className="transition-shadow hover:shadow-md">
+        {cards.map((c, i) => (
+          <Card
+            key={c.label}
+            className="hover-lift animate-fade-in"
+            style={{ animationDelay: `${i * 60}ms` }}
+          >
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-medium text-muted-foreground">{c.label}</span>
-                <c.icon className="h-4 w-4 text-primary" />
+                <c.icon className="h-4 w-4 text-primary transition-transform duration-300 group-hover:rotate-6" />
               </div>
-              <div className="mt-2 text-2xl font-semibold">{c.value}</div>
+              <div className="mt-2 text-2xl font-semibold tabular-nums">{c.value}</div>
             </CardContent>
           </Card>
         ))}
@@ -81,17 +85,18 @@ function Dashboard() {
       <section>
         <h2 className="mb-3 text-lg font-semibold">AI Tools</h2>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {tools.map((t) => (
+          {tools.map((t, i) => (
             <Link
               key={t.url}
               to={t.url}
-              className="group rounded-xl border bg-card p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
+              style={{ animationDelay: `${i * 70}ms` }}
+              className="group hover-lift press animate-fade-in rounded-xl border bg-card p-5 shadow-sm hover:border-primary/40"
             >
               <div className="flex items-center justify-between">
-                <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary">
-                  <t.icon className="h-5 w-5" />
+                <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/15">
+                  <t.icon className="h-5 w-5 transition-transform duration-300 group-hover:-rotate-6" />
                 </div>
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-primary" />
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
               </div>
               <div className="mt-4 font-semibold">{t.title}</div>
               <p className="mt-1 text-sm text-muted-foreground">{t.desc}</p>
