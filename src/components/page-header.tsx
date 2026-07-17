@@ -12,11 +12,11 @@ export function PageHeader({
   actions?: ReactNode;
 }) {
   return (
-    <div className="flex flex-wrap items-start justify-between gap-4">
+    <div className="flex flex-wrap items-start justify-between gap-4 animate-fade-in">
       <div className="flex items-start gap-3">
         {Icon && (
-          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
-            <Icon className="h-5 w-5" />
+          <div className="group grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary animate-scale-in transition-transform duration-300 hover:scale-105 hover:bg-primary/15">
+            <Icon className="h-5 w-5 transition-transform duration-300 group-hover:-rotate-6" />
           </div>
         )}
         <div className="min-w-0">

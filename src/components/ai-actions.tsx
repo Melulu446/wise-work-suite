@@ -5,20 +5,22 @@ import { downloadText } from "@/lib/history";
 
 export function AIActions({ text, filename }: { text: string; filename: string }) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 animate-fade-in">
       <Button
         variant="outline"
         size="sm"
+        className="press transition-all duration-200 hover:border-primary/40 hover:text-primary"
         onClick={async () => {
           await navigator.clipboard.writeText(text);
           toast.success("Copied successfully!");
         }}
       >
-        <Copy className="mr-2 h-3.5 w-3.5" /> Copy
+        <Copy className="mr-2 h-3.5 w-3.5 transition-transform duration-200 group-hover:scale-110" /> Copy
       </Button>
       <Button
         variant="outline"
         size="sm"
+        className="press transition-all duration-200 hover:border-primary/40 hover:text-primary"
         onClick={() => {
           downloadText(filename, text);
           toast.success("Download complete.");
