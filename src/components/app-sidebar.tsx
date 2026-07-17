@@ -46,7 +46,7 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader className="border-b">
         <div className="flex items-center gap-3 px-2 py-2">
-          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary font-bold text-primary-foreground shadow-sm">
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary font-bold text-primary-foreground shadow-sm transition-transform duration-300 hover:scale-105 hover:rotate-3">
             W
           </div>
           {!collapsed && (
@@ -66,9 +66,14 @@ export function AppSidebar() {
             <SidebarMenu>
               {nav.map((item) => (
                 <SidebarMenuItem key={item.url}>
-                  <SidebarMenuButton asChild isActive={pathname === item.url} tooltip={item.title}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={pathname === item.url}
+                    tooltip={item.title}
+                    className="group transition-all duration-200 hover:translate-x-0.5 data-[active=true]:shadow-sm"
+                  >
                     <Link to={item.url}>
-                      <item.icon className="h-4 w-4" />
+                      <item.icon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
@@ -82,9 +87,14 @@ export function AppSidebar() {
         <SidebarMenu>
           {secondary.map((item) => (
             <SidebarMenuItem key={item.url}>
-              <SidebarMenuButton asChild isActive={pathname === item.url} tooltip={item.title}>
+              <SidebarMenuButton
+                asChild
+                isActive={pathname === item.url}
+                tooltip={item.title}
+                className="group transition-all duration-200 hover:translate-x-0.5"
+              >
                 <Link to={item.url}>
-                  <item.icon className="h-4 w-4" />
+                  <item.icon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
                   <span>{item.title}</span>
                 </Link>
               </SidebarMenuButton>
