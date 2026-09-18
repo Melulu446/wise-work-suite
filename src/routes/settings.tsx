@@ -21,6 +21,12 @@ function SettingsPage() {
   const { theme, setTheme } = useTheme();
   const [lang, setLang] = useState("en");
   const [notif, setNotif] = useState(true);
+  const [profile, setProfile] = useState<Profile>(emptyProfile);
+
+  useEffect(() => {
+    setProfile(loadProfile());
+  }, []);
+
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
