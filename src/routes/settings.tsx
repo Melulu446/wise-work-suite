@@ -10,7 +10,10 @@ import { PageHeader } from "@/components/page-header";
 import { ResponsibleAINotice } from "@/components/responsible-ai";
 import { useTheme } from "@/lib/theme";
 import { clearHistory } from "@/lib/history";
-import { useState } from "react";
+import { emptyProfile, loadProfile, saveProfile, type Profile } from "@/lib/profile";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/settings")({ component: SettingsPage });
 
@@ -18,6 +21,12 @@ function SettingsPage() {
   const { theme, setTheme } = useTheme();
   const [lang, setLang] = useState("en");
   const [notif, setNotif] = useState(true);
+  const [profile, setProfile] = useState<Profile>(emptyProfile);
+
+  useEffect(() => {
+    setProfile(loadProfile());
+  }, []);
+
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
@@ -73,6 +82,76 @@ function SettingsPage() {
               Clear
             </Button>
           </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent className="space-y-4 p-6">
+          <div>
+            <Label className="text-base">Your Profile</Label>
+            <p className="text-xs text-muted-foreground">
+              Used to auto-fill your resume in the Resume Builder.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {(
+              [
+                ["fullName", "Full Name"],
+                ["title", "Professional Title"],
+                ["email", "Email"],
+                ["phone", "Phone"],
+                ["location", "Location"],
+                ["linkedin", "LinkedIn"],
+                ["portfolio", "Portfolio"],
+              ] as const
+            ).map(([key, label]) => (
+              <div key={key} className="space-y-1.5">
+                <Label htmlFor={`p-${key}`} className="text-xs">{label}</Label>
+                <Input
+                  id={`p-${key}`}
+                  value={profile[key]}
+                  onChange={(e) => setProfile({ ...profile, [key]: e.target.value })}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="p-summary" className="text-xs">Professional Summary</Label>
+            <Textarea
+              id="p-summary"
+              rows={3}
+              value={profile.summary}
+              onChange={(e) => setProfile({ ...profile, summary: e.target.value })}
+            />
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="space-y-1.5">
+              <Label htmlFor="p-skills" className="text-xs">Skills</Label>
+              <Textarea
+                id="p-skills"
+                rows={2}
+                value={profile.skills}
+                onChange={(e) => setProfile({ ...profile, skills: e.target.value })}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="p-languages" className="text-xs">Languages</Label>
+              <Textarea
+                id="p-languages"
+                rows={2}
+                value={profile.languages}
+                onChange={(e) => setProfile({ ...profile, languages: e.target.value })}
+              />
+            </div>
+          </div>
+          <Button
+            onClick={() => {
+              saveProfile(profile);
+              toast.success("Profile saved.");
+            }}
+          >
+            Save Profile
+          </Button>
         </CardContent>
       </Card>
 

@@ -6,6 +6,7 @@ import {
   CalendarClock,
   BookOpen,
   Bot,
+  FileUser,
   History,
   Settings,
 } from "lucide-react";
@@ -30,6 +31,7 @@ const nav = [
   { title: "AI Task Planner", url: "/tasks", icon: CalendarClock },
   { title: "AI Research Assistant", url: "/research", icon: BookOpen },
   { title: "AI Chatbot", url: "/chat", icon: Bot },
+  { title: "Resume Builder", url: "/resume", icon: FileUser },
 ] as const;
 
 const secondary = [

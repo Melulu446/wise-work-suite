@@ -6,6 +6,7 @@ import {
   CalendarClock,
   BookOpen,
   Bot,
+  FileUser,
   ArrowUpRight,
   Sparkles,
   Clock,
@@ -22,6 +23,7 @@ const tools = [
   { title: "AI Task Planner", url: "/tasks", icon: CalendarClock, desc: "Build a smart, time-blocked schedule." },
   { title: "AI Research Assistant", url: "/research", icon: BookOpen, desc: "Summarize topics with key insights." },
   { title: "AI Chatbot", url: "/chat", icon: Bot, desc: "Ask your workplace assistant anything." },
+  { title: "Resume Builder", url: "/resume", icon: FileUser, desc: "Build a professional CV and export a PDF." },
 ] as const;
 
 function useLive<T>(read: () => T): T {
