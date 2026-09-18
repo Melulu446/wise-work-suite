@@ -43,7 +43,7 @@ import { ResumeDocument } from "@/components/resume/resume-document";
 import { runAI } from "@/lib/ai.functions";
 import { atsPrompt, improvePrompt, parseAtsScore, tailorPrompt } from "@/lib/resume-prompts";
 import { loadProfile, profileIsEmpty } from "@/lib/profile";
-import { bumpStat, downloadText, saveHistoryItem } from "@/lib/history";
+import { downloadText, saveHistoryItem } from "@/lib/history";
 import {
   DEFAULT_SECTIONS,
   DEFAULT_STYLE,
@@ -256,7 +256,6 @@ function ResumeBuilder() {
 
   function save() {
     saveResume(state);
-    bumpStat("research");
     saveHistoryItem({
       kind: "research",
       title: `Resume — ${state.data.fullName || "Untitled"}`,
