@@ -51,7 +51,7 @@ export async function exportResumePdf(state: ResumeState): Promise<void> {
 
     let offset = 0;
     let page = 0;
-    while (offset < canvas.height) {
+    while (offset < canvas.height - 8) {
       const sliceHeight = Math.min(pageHeightPx, canvas.height - offset);
       const slice = document.createElement("canvas");
       slice.width = canvas.width;
