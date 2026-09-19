@@ -23,6 +23,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import logoAsset from "@/assets/workwise-logo.png.asset.json";
 
 const nav = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
@@ -48,8 +49,12 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader className="border-b">
         <div className="flex items-center gap-3 px-2 py-2">
-          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary font-bold text-primary-foreground shadow-sm transition-transform duration-300 hover:scale-105 hover:rotate-3">
-            W
+          <div className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl bg-[#0A0A0F] shadow-sm transition-transform duration-300 hover:scale-105 hover:rotate-3">
+            <img
+              src={logoAsset.url}
+              alt="WorkWise AI logo"
+              className="h-6 w-6 object-contain"
+            />
           </div>
           {!collapsed && (
             <div className="min-w-0">
