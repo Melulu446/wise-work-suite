@@ -337,6 +337,23 @@ function ResumeBuilder() {
   }
 
   const d = state.data;
+  const canExport = d.fullName.trim() !== "" && (d.email.trim() !== "" || d.phone.trim() !== "");
+
+  const exportPdf = async () => {
+    if (!canExport) {
+      toast.error("Add your full name and an email or phone number before exporting.");
+      return;
+    }
+    setExporting(true);
+    try {
+      await exportResumePdf(state);
+      toast.success(`Downloaded ${resumePdfFilename(state)}`);
+    } catch {
+      toast.error("Couldn't generate the PDF. Please try again.");
+    } finally {
+      setExporting(false);
+    }
+  };
 
   return (
     <div className="mx-auto max-w-[1600px] space-y-6">
@@ -352,8 +369,14 @@ function ResumeBuilder() {
             <Button variant="outline" size="sm" className="press" onClick={save}>
               <Save className="mr-2 h-4 w-4" /> Save Resume
             </Button>
-            <Button size="sm" className="press" onClick={() => window.print()}>
-              <Download className="mr-2 h-4 w-4" /> Download PDF
+            <Button
+              size="sm"
+              className="press"
+              onClick={exportPdf}
+              disabled={exporting || !canExport}
+              title={canExport ? `Download ${resumePdfFilename(state)}` : "Enter your name and email or phone to export"}
+            >
+              <Download className="mr-2 h-4 w-4" /> {exporting ? "Preparing PDF..." : "Download PDF"}
             </Button>
           </div>
         }
@@ -804,7 +827,7 @@ function ResumeBuilder() {
               <ResumePreview state={state} />
             </div>
             <p className="mt-2 text-xs text-muted-foreground">
-              Download PDF opens your print dialog — choose “Save as PDF” for a print-perfect A4 file.
+              Download PDF exports the resume exactly as previewed, in your selected template, as an A4 file named after you.
             </p>
           </div>
         </div>
