@@ -44,6 +44,7 @@ import { runAI } from "@/lib/ai.functions";
 import { atsPrompt, improvePrompt, parseAtsScore, tailorPrompt } from "@/lib/resume-prompts";
 import { loadProfile, profileIsEmpty } from "@/lib/profile";
 import { downloadText, saveHistoryItem } from "@/lib/history";
+import { exportResumePdf, resumePdfFilename } from "@/lib/resume-pdf";
 import {
   DEFAULT_SECTIONS,
   DEFAULT_STYLE,
@@ -149,6 +150,7 @@ function ResumeBuilder() {
   });
   const [chosen, setChosen] = useState(false);
   const [busy, setBusy] = useState<string | null>(null);
+  const [exporting, setExporting] = useState(false);
   const [ats, setAts] = useState<{ score: number | null; body: string } | null>(null);
   const [job, setJob] = useState("");
   const [jobs, setJobs] = useState<SavedJob[]>([]);
