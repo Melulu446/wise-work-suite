@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AppTopbar } from "@/components/app-topbar";
+import { AppFooter } from "@/components/app-footer";
 import { ThemeProvider } from "@/lib/theme";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -82,23 +83,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "WorkWise AI — AI Workplace Productivity Assistant" },
+      { title: "WorkWise AI — Built by Melusi Nkosi" },
       {
         name: "description",
         content:
-          "WorkWise AI is an AI-powered workplace productivity assistant with email generation, meeting summaries, task planning, research and chat.",
+          "WorkWise AI is Melusi Nkosi's AI-powered workplace productivity assistant with email generation, meeting summaries, task planning, research, chat and a resume builder.",
       },
-      { name: "author", content: "WorkWise AI" },
-      { property: "og:title", content: "WorkWise AI — AI Workplace Productivity Assistant" },
+      { name: "author", content: "Melusi Nkosi" },
+      { property: "og:title", content: "WorkWise AI — Built by Melusi Nkosi" },
       {
         property: "og:description",
         content:
-          "WorkWise AI is an AI-powered workplace productivity assistant with email generation, meeting summaries, task planning, research and chat.",
+          "WorkWise AI is Melusi Nkosi's AI-powered workplace productivity assistant with email generation, meeting summaries, task planning, research, chat and a resume builder.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "WorkWise AI — AI Workplace Productivity Assistant" },
-      { name: "twitter:description", content: "WorkWise AI is an AI-powered workplace productivity assistant with email generation, meeting summaries, task planning, research and chat." },
+      { name: "twitter:title", content: "WorkWise AI — Built by Melusi Nkosi" },
+      { name: "twitter:description", content: "WorkWise AI is Melusi Nkosi's AI-powered workplace productivity assistant with email generation, meeting summaries, task planning, research, chat and a resume builder." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/14e04046-9eb2-4ba3-b276-83c734909a34" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/14e04046-9eb2-4ba3-b276-83c734909a34" },
     ],
@@ -153,6 +154,7 @@ function RootComponent() {
                   <Outlet />
                 </div>
               </main>
+              <AppFooter />
             </div>
           </div>
           <Toaster richColors position="top-right" />
