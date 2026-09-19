@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Settings as SettingsIcon } from "lucide-react";
+import { Settings as SettingsIcon, Mail, Linkedin, Globe } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -152,6 +152,44 @@ function SettingsPage() {
           >
             Save Profile
           </Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent className="space-y-3 p-6">
+          <div>
+            <Label className="text-base">About</Label>
+            <p className="text-xs text-muted-foreground">
+              WorkWise AI is designed and built by Melusi Nkosi.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
+            <a
+              href="mailto:melusinkosi446@gmail.com"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-primary"
+            >
+              <Mail className="h-3.5 w-3.5" />
+              melusinkosi446@gmail.com
+            </a>
+            <a
+              href="https://www.linkedin.com/in/melusi-nkosi-154723254"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-primary"
+            >
+              <Linkedin className="h-3.5 w-3.5" />
+              linkedin.com/in/melusi-nkosi-154723254
+            </a>
+            <a
+              href="https://melusi-one.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-primary"
+            >
+              <Globe className="h-3.5 w-3.5" />
+              melusi-one.vercel.app
+            </a>
+          </div>
         </CardContent>
       </Card>
 
